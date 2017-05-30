@@ -1,0 +1,111 @@
+{
+	"time_steps": 4,
+	"accuracy": 30,
+	"prices": [
+		5, 7, 9, 6
+	],
+	"agents": [
+		{
+			"name": "a1",
+			"max_delivery": [
+				240, 360, 440, 280
+			],
+			"initial_demand": 180,
+			"WRP": [
+				1.2, 1.14, 0.76
+			]
+		},
+		{
+			"name": "a2",
+			"max_delivery": [
+				336, 504, 616, 392
+			],
+			"initial_demand": 384,
+			"WRP": [
+				1.5, 0.9, 0.3
+			]
+		},
+		{
+			"name": "a3",
+			"max_delivery": [
+				432, 684, 792, 504
+			],
+			"initial_demand": 6,
+			"WRP": [
+				1.5, 0.9, 0.9
+			]
+		},
+		{
+			"name": "a4",
+			"max_delivery": [
+				48, 72, 88, 56
+			],
+			"initial_demand": 480,
+			"WRP": [
+				1, 1, 1
+			]
+		},
+		{
+			"name": "a5",
+			"max_delivery": [
+				288, 432, 528, 336
+			],
+			"initial_demand": 300,
+			"WRP": [
+				1.2, 1, 0.8
+			]
+		}
+	],
+	"pipelines": [
+		{
+			"from": "a1",
+			"to": "a2",
+			"transfer_price": 2
+		},
+		{
+			"from": "a1",
+			"to": "a4",
+			"transfer_price": 1
+		},
+		{
+			"from": "a2",
+			"to": "a4",
+			"transfer_price": 1.5
+		},
+		{
+			"from": "a2",
+			"to": "a5",
+			"transfer_price": 0.5
+		},
+		{
+			"from": "a3",
+			"to": "a2",
+			"transfer_price": 1
+		},
+		{
+			"from": "a3",
+			"to": "a4",
+			"transfer_price": 2.5
+		},
+		{
+			"from": "a3",
+			"to": "a5",
+			"transfer_price": 1.5
+		},
+		{
+			"from": "a4",
+			"to": "a1",
+			"transfer_price": 1
+		},
+		{
+			"from": "a5",
+			"to": "a2",
+			"transfer_price": 2
+		},
+		{
+			"from": "a5",
+			"to": "a4",
+			"transfer_price": 0.5
+		}
+	]
+}
