@@ -33,9 +33,6 @@ for a in wg['agents']:
 	name = 'demand_%s' % a['name']
 	fg['constants'].append({'name': name, 'value':a['initial_demand']})
 
-	name = 'water_consumption_%s' % a['name']
-	fg['variables'].append({'name': name, 'domain':{'min':0, 'max': a['initial_demand'], 'step': 1}})
-
 	in_water = set()
 	out_water = set()
 	transfer_prices = set()

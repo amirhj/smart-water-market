@@ -79,46 +79,6 @@
                 "min": 0
             }, 
             "name": "w_a5_a4"
-        }, 
-        {
-            "domain": {
-                "max": 180, 
-                "step": 1, 
-                "min": 0
-            }, 
-            "name": "water_consumption_a1"
-        }, 
-        {
-            "domain": {
-                "max": 384, 
-                "step": 1, 
-                "min": 0
-            }, 
-            "name": "water_consumption_a2"
-        }, 
-        {
-            "domain": {
-                "max": 6, 
-                "step": 1, 
-                "min": 0
-            }, 
-            "name": "water_consumption_a3"
-        }, 
-        {
-            "domain": {
-                "max": 480, 
-                "step": 1, 
-                "min": 0
-            }, 
-            "name": "water_consumption_a4"
-        }, 
-        {
-            "domain": {
-                "max": 300, 
-                "step": 1, 
-                "min": 0
-            }, 
-            "name": "water_consumption_a5"
         }
     ], 
     "functions": [
