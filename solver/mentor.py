@@ -68,6 +68,12 @@ class Mentor:
 				self.pareto_frontier = new_frontier
 
 				self.path_log.append({'actions':choosen_actions, 'variables': values, 'functions': function_values, 'pareto': self.pareto_frontier})
+				
+				if opt['max_iteration'] > 0:
+					if opt['max_iteration'] <= steps:
+						converged = True
+						print 'Episode %d converged in %d steps(max).' % (e, steps)
+						
 
 	def apply_actions(self, value_indecies, choosen_actions):
 		for v in value_indecies:

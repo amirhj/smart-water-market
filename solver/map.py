@@ -19,6 +19,7 @@ from messageserver import MessageServer
 				}"""
 opt_pattern = { '-l': {'name': 'learning_episodes', 'type': 'int', 'default': 10}, 
 				'-c': {'name': 'convergence', 'type': 'int', 'default': 5},
+				'-c': {'name': 'max_iteration', 'type': 'int', 'default': 0},
 				'-g': {'name': 'global_state', 'type': 'bool', 'default': False}, 
 				'-o': {'name': 'output', 'type': 'str', 'default': None},
 				'-p': {'name': 'pf', 'type': 'str', 'default': None}, }
