@@ -69,8 +69,8 @@ class Mentor:
 
 				self.path_log.append({'actions':choosen_actions, 'variables': values, 'functions': function_values, 'pareto': self.pareto_frontier})
 				
-				if opt['max_iteration'] > 0:
-					if opt['max_iteration'] <= steps:
+				if self.opt['max_iteration'] > 0:
+					if self.opt['max_iteration'] <= steps:
 						converged = True
 						print 'Episode %d converged in %d steps(max).' % (e, steps)
 						
