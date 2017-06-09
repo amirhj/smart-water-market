@@ -18,6 +18,10 @@ class Mentor:
 		self.path_log = []
 		self.pareto_frontier = []
 
+		self.folder = None
+
+		self.start_time = datetime.now()
+
 	def initialize(self):
 		self.ms.load(self.agents)
 
@@ -38,6 +42,7 @@ class Mentor:
 		for e in range(self.opt['learning_episodes']):
 			steps = 0
 			converged = False
+			start_time = datetime.now()
 			while not converged:
 				# getting choosen action of agents
 				choosen_actions = {}
@@ -73,6 +78,11 @@ class Mentor:
 					if self.opt['max_iteration'] <= steps:
 						converged = True
 						print 'Episode %d converged in %d steps(max).' % (e, steps)
+
+			end_time = datetime.now()
+			print "The run finished in ", self.duration(start_time, end_time)
+
+			self.write_results()
 						
 
 	def apply_actions(self, value_indecies, choosen_actions):
@@ -107,19 +117,24 @@ class Mentor:
 		else:
 			self.convergenc_count = 0
 
-	def terminate(self):
+	def write_results(self):
 		sys.stdout.flush()
 		sys.stderr.flush()
 
-		folder = 'results/'+datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-		if self.opt['output'] is not None:
-			folder = 'results/'+self.opt['output']
+		if self.folder is None:
+			self.folder = 'results/'+datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+			if self.opt['output'] is not None:
+				self.folder = 'results/'+self.opt['output']
+			os.mkdir(self.folder)
 
-		os.mkdir(folder)
-
-		res = open(folder+'/results.json', 'w')
+		res = open(self.folder+'/results.json', 'w')
 		res.write(json.dumps({'opt':self.opt, 'path_log': self.path_log}))
 		res.close()
+
+	def terminate(self):
+		end_time = datetime.now()
+		print "The run finished in ", self.duration(self.start_time, end_time)
+
 
 	def read_pareto_front(self):
 		pff = json.loads(open('./'+self.opt['pf'], 'r').read())
@@ -172,6 +187,13 @@ class Mentor:
 			point[v] = pf[0][0][variable_indecies[v]]
 
 		return point
+
+	def duration(self, start_time, end_time):
+		time_delta = end_time - start_time
+		seconds = time_delta.seconds % 60
+		minutes = time_delta.seconds / 60
+		hours = minutes / 60
+		return "%d days & %d:%d:%d.%d" % (time_delta.days, hours, minutes, seconds, time_delta.microseconds)
 
 
 
